@@ -1,17 +1,18 @@
 package com.claim.service;
 
-import com.claim.Exception.TooManyRowsException;
 import com.claim.dto.PostMatchSearchRequest;
+import com.claim.dto.PostMatchSearchResponse;
 import com.claim.projection.PostMatchDetailView;
-import com.claim.projection.PostMatchSearchView;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-
 public interface PostMatchService {
-    Page<PostMatchSearchView> search(PostMatchSearchRequest request, Pageable pageable) throws TooManyRowsException;
+
+    PostMatchSearchResponse search(PostMatchSearchRequest request,
+                                   int page,
+                                   int size);
+
     List<PostMatchDetailView> getHistory(Long claimId);
+
     int getMaxAllowedRows();
 }
